@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            margin: 4px 0;
+        }
+
+        #player {
+            display: none;
+        }
+
+        [data-current-song1st=''], [data-current-song2nd=''] {
+            color: red;
+        }
+
+        body {
+            color: rgb(37, 37, 37);
+            background-color: rgb(243, 243, 243);
+            cursor: url('/cursor.png'), default;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .song-entry:hover {
+            cursor: pointer;
+        }
+
+        /* ----------------- */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .player-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border: 2px solid deepskyblue;
+            border-radius: 5px;
+            color: deepskyblue;
+        }
+
+        .player-wrapper * {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .song-name-wrapper {
+            padding: 15px;
+            width: 100%;
+        }
+
+        .song-name-inner {
+            font-style: italic;
+            border-radius: 5px;
+            border: 1px solid deepskyblue;
+            background-color: rgb(221, 242, 255);
+            text-align: center;
+        }
+
+        .controls-wrapper {
+            padding: 0 15px;
+            text-align: center;
+        }
+        
+        .buttons-wrapper button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid deepskyblue;
+            background-color: rgb(221, 242, 255);
+            color: deepskyblue;
+        }
+
+        .seekers-wrapper {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .seekers-wrapper input {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 1px;
+            background: deepskyblue;
+            outline: none;
+        }
+
+        .seekers-wrapper input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 11px;
+            height: 11px;
+            background: rgb(221, 242, 255);
+            cursor: pointer;
+            border: 1px solid deepskyblue;
+        }
+
+        .seekers-wrapper input::-moz-range-thumb {
+            width: 11px;
+            height: 11px;
+            background: rgb(221, 242, 255);
+            border: 1px solid deepskyblue;
+            cursor: pointer;
+        }
+
+        .volume-control {
+            width: 75px;
+        }
+
+        .song-list-wrapper {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .song-list-inner {
+            border-radius: 5px;
+            border: 1px solid deepskyblue;
+            background: rgb(236, 248, 255);
+        }
+
+        .song-list-entry {
+            padding: 5px;
+            border-bottom: 1px solid deepskyblue;
+            text-align: center;
+        }
+
+        .song-list-entry:last-child {
+            border-bottom: none;
+        }
+
+        [data-current-song=''] {
+            font-style: italic;
+        }
+
+        .song-list-entry-text {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        A demo page for <a href="https://github.com/saint-images/cassette-yt">cassette-yt</a>.
+    </p>
+    <div>
+        <div class="player-wrapper">
+            <div class="song-name-wrapper">
+                <div class="song-name-inner">
+                    <p class="song-name" data-yt-role="song-name-display">
+        
+                    </p>
+                </div>
+            </div>
+            <div class="controls-wrapper">
+                <div class="buttons-wrapper">
+                    <button class="prev-button" data-yt-role="prev">
+                        &lt;
+                    </button>
+                    <button class="playback-button" data-yt-role="playback">
+                        ▷
+                    </button>
+                    <button class="next-button" data-yt-role="next">
+                        &gt;
+                    </button>
+                </div>
+                <div class="seekers-wrapper">
+                    <span data-yt-role="song-current-time"></span>
+                    <input type="range" data-yt-role="song-seeker">
+                    <span data-yt-role="song-length"></span>|
+                    <input type="range" min="0" max="100" value="50" class="volume-control" data-yt-role="volume-bar">
+                </div>
+            </div>
+            <div class="song-list-wrapper">
+                <div class="song-list-inner" data-yt-role="song-list">
+                    <div class="song-list-entry" data-yt-role="song-list-entry">
+                        <span data-yt-role="song-list-entry-number">1</span>. <span class="song-list-entry-text" data-yt-role="song-list-entry-text">vlah - blah blah</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <script src="/cassette-yt.js"></script>
+    <script>
+        let demoSongsData = [
+            {
+                id: 'SUAnU1A38ec',
+                name: 'NUMBER GIRL - 透明少女'
+            },
+            {
+                id: 'zINeF8aaKpI',
+                name: 'Espasmodicos - Enciendes tu motor'
+            },
+            {
+                id: '0YgLJkK8_SY',
+                name: 'きのこ帝国 - Girl meets NUMBER GIRL'
+            },
+            {
+                id: 'u1nsXxeuz4o',
+                name: 'Cirrus - Back On A Mission'
+            },
+            {
+                id: 'diXr6WiXALE',
+                name: 'ハルカトミユキ - ドライアイス'
+            },
+        ];
+        let demoSongs = Song.initializeFromDataArray(demoSongsData);
+            
+    </script>
+</body>
+</html>
