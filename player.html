@@ -183,6 +183,7 @@
                 </div>
             </div>
         </div>
+    </div>
         
     <script src="/cassette-yt.js"></script>
     <script>
@@ -209,7 +210,7 @@
             },
         ];
         let demoSongs = Song.initializeFromDataArray(demoSongsData);
-            
+        let demoPlayer = PlayerManager.getInstance().createPlayer(demoSongs);
     </script>
 </body>
 </html>
