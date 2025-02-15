@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css">
+    <title>Андрей Макаров</title>
+
+    <style>
+        body {
+            font-family: Arial, system-ui, sans-serif;
+            max-width: 950px;
+            margin: 0px auto;
+            padding: 40px;
+            font-size: 12px;
+        }
+
+        body > div {
+            display: none;
+        }
+
+        a, a:visited {
+            color: var(--accent);
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card img {
+            border:1px solid;
+            border-color:var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            box-sizing: content-box;
+        }
+
+        .card__me {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .card__me-info {
+            flex: 1;
+        }
+
+        .card__me-info-buttons {
+            padding-top: 8px;
+        }
+
+        .card__lists {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .card__list-wrapper {
+            flex: 1;
+        }
+
+        .card__list-wrapper--narrow {
+            flex: 0.5
+        }
+
+        .card__list-header {
+            font-size: 14px;
+        }
+
+        .card__list {
+            list-style: inside;
+        }
+
+        .card__list > ul {
+            padding-left: 12px;
+        }
+
+        .cs-tabs {
+            user-select: unset;
+        }
+
+        .cs-tabs .label {
+            font-size: 12px;
+        }
+
+        .cs-hr {
+            margin-top: 2px;
+            margin-bottom: 6px;
+        }
+
+        .cs-btn {
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        a.cs-btn, a.cs-btn:visited {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="cs-tabs">
+            <input
+              class="radiotab"
+              name="tabs"
+              tabindex="1"
+              type="radio"
+              id="tabone"
+              checked="checked"
+            />
+            <label class="label" for="tabone">Резюме</label>
+            <div class="panel" tabindex="1">
+                <div class="card">
+                    <div class="card__me">
+                        <img src="me.jpg" width="128" height="160" alt="это я" srcset="me@2x.jpg 2x">
+                        <div class="card__me-info">
+                            <h1>Андрей Макаров</h1>
+                            <p>Full-stack разработчик</p>
+                            <hr class="cs-hr" />
+                            <p>⎈ Калининград</p>
+                            <div class="card__me-info-buttons">
+                                <a class="cs-btn" href="mailto:images64@hotmail.com">E-mail</a>
+                                <a class="cs-btn" href="https://t.me/mne_moloka">Telegram</a>
+                                <a class="cs-btn" href="https://github.com/saint-images/">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card__lists">
+                        <div class="card__list-wrapper card__list-wrapper--narrow">
+                            <h3 class="card__list-header">Стек</h3>
+                            <hr class="cs-hr" />
+                            <ul class="card__list">
+                                <li>PHP, Bitrix Framework</li>
+                                <li>Plain JavaScript, базово TypeScript</li>
+                                <li>Vue, поверхностно React</li>
+                                <li>Plain CSS</li>
+                                <li>Mercurial</li>
+                                <li>MySQL</li>
+                            </ul>
+                        </div>
+                        <div class="card__list-wrapper">
+                            <h3 class="card__list-header">Опыт работы</h3>
+                            <hr class="cs-hr" />
+                            <ul class="card__list">
+                                <li>Full-stack разработчик | Bitrix24, 2020 - н.в.</li>
+                                <ul>
+                                   <li>Создание и поддержка интеграций с сервисами платёжных систем и онлайн-касс</li>
+                                   <li>Создание REST-механизмов для партнёрских интеграций</li>
+                                   <li>Создание и поддержка инструментов для продажи товаров и услуг</li>
+                                   <li>Поддержка интеграции с OpenStreetMap, встройка карты в интерфейс продукта</li>
+                                   <li>Интеграция складского учёта с CRM</li>
+                                   <li>Создание и поддержка функционала импорта датасетов в BI Конструктор</li>
+                                   <li>Модификация интерфейса Apache Superset</li>
+                                   <li>Проверка домашних заданий студентов курса "Веб-разработчик" в Битрикс24//Университет</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- опыт, контакты -->
+                </div>
+            </div>
+          </div>
+    </main>
+</body>
+</html>
