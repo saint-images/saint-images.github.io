@@ -7,16 +7,17 @@
     <title>Андрей Макаров</title>
 
     <style>
+        :root {
+            --base-gap: 20px;
+            --base-font-size: 12px;
+        }
+
         body {
             font-family: Arial, system-ui, sans-serif;
             max-width: 950px;
             margin: 0px auto;
             padding: 40px;
-            font-size: 12px;
-        }
-
-        body > div {
-            display: none;
+            font-size: var(--base-font-size);
         }
 
         a, a:visited {
@@ -26,7 +27,7 @@
         .card {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: var(--base-gap);
         }
 
         .card img {
@@ -38,7 +39,7 @@
         .card__me {
             display: flex;
             flex-direction: row;
-            gap: 20px;
+            gap: var(--base-gap);
         }
 
         .card__me-info {
@@ -46,13 +47,16 @@
         }
 
         .card__me-info-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 3px;
             padding-top: 8px;
         }
 
         .card__lists {
             display: flex;
             flex-direction: row;
-            gap: 20px;
+            gap: var(--base-gap);
         }
 
         .card__list-wrapper {
@@ -80,7 +84,7 @@
         }
 
         .cs-tabs .label {
-            font-size: 12px;
+            font-size: var(--base-font-size);
         }
 
         .cs-hr {
@@ -89,12 +93,45 @@
         }
 
         .cs-btn {
-            font-size: 12px;
+            font-size: var(--base-font-size);
             text-decoration: none;
         }
 
         a.cs-btn, a.cs-btn:visited {
-            color: white;
+            color: var(--text);
+        }
+
+        @media (max-width: 799px)
+        {
+            body {
+                padding: 5px;
+            }
+        }
+
+        @media (max-width: 599px)
+        {
+            .card__lists {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 499px)
+        {
+            .card__lists {
+                flex-direction: column;
+            }
+
+            .card__me-info-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 399px)
+        {
+            .card__me {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -153,12 +190,11 @@
                                    <li>Интеграция складского учёта с CRM</li>
                                    <li>Создание и поддержка функционала импорта датасетов в BI Конструктор</li>
                                    <li>Модификация интерфейса Apache Superset</li>
-                                   <li>Проверка домашних заданий студентов курса "Веб-разработчик" в Битрикс24//Университет</li>
+                                   <li>Проверка домашних заданий студентов курса "Веб-разработчик" в Битрикс24//Университете</li>
                                 </ul>
                             </ul>
                         </div>
                     </div>
-                    <!-- опыт, контакты -->
                 </div>
             </div>
           </div>
